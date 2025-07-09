@@ -1,45 +1,17 @@
-# Respotify - Spotify Statistics 
-### Fullstack development of a website. 
-### Backend:  Django
-### Frontend: React & Nodejs
- All data is taken from the Spotify WebAPI which requires the user to login
+# Lecture Transcriber
+Utilizes python libraries to transcribe audio files into text, then turns it into a nice readable format via AI. Uses the free Google Speech Recognition API by splitting audio chunks in 60 second intervals, then the text is passed to an OpenAI Model with appropriate prompts.
 
-## Production Link
-https://respotify-test-gsmlc.ondigitalocean.app
+## Setup the Project
+You must have an OpenAI account and API key for the program to use.
 
-## Environment Variables (Production will require these)
+### The output is written in markdown. You should use a program that can read markdown files + mermaid to have the intended output, such as Notable.
 
-To run this project, you will need to add the following environment variables to your .env file
+Create a `.env` file and input your OpenAI API key named `OPENAPI_KEY`.
 
-`CLIENT_ID` - Client ID from the Spotify Application
+The project will create 4 additional directories.
+- `audioChunk` - This is where chunks of audios are stored to be transcripted
+- `inputFiles` - You may add videos/audios here
+- `outputFiles` - Summarized transcripts will go here
+- `transcripts` - Generated transcripts will go here
 
-`CLIENT_SECRET` - Client Secret from the Spotify Application
-
-`SPOTIPY_REDIRECT_URI` - Redirect URI
-
-## Deployment
-
-To deploy this project:
-- Install all libraries from `requirements.txt`
-- Install `node.js` and `django`
-
-Build the static files by running:
-```bash
-  npm run build
-```
-
-```bash
-  python manage.py collectstatic
-```
-Run the application by running:
-```bash
-  python manage.py runserver
-```
-
-## Spotify API
-The Spotify API is used to fetch user's song informations. You must create your own Spotify Developer account if you wish to deploy this project.  When the user authenticates, they will be redirected back to a callback URI with their authentication token given back to the server.
-
-## Redirect URI
-
-The redirect URI is the link that the user will get redirected to after successfully authenticating their Spotify account. It must be redirected to the /callback link so that the website is able to read and store the information given from Spotify. `http://127.0.0.1:8000/callback/` may be used as a development callback URI.
-
+There is an instruction which acts as the developer instruction to OpenAI's model. However this seems to be less efficient than having it as an actual prompt in the OpenAI's model. Consider adding the prompt from `instruction.txt` into a model.
