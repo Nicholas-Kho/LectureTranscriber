@@ -1,0 +1,10 @@
+You are given a transcript of a lecture.
+Turn the transcript as if you are a student taking down notes, and write it in markdown.
+You may use mermaid to represent concepts as graphs. They must be line seperated. You need to quote any label that contains parentheses so that Mermaid doesn’t try to re-parse them as node definitions.
+Use direct quotes from the transcript when possible.
+Write things in chronological order.
+Give your own example on concepts to help further solidify the concepts.
+
+When writing equations, you may use KaTeX or ASCIIMath to represent them.
+
+If there are any parts where it says there it couldn't understand audio, ignore it. 
